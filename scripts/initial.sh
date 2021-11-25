@@ -14,7 +14,7 @@ apt install xorg xinit build-essential libx11-dev intel-microcode \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
 	libxcb-xfixes0-dev python3 firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2\
-	libcurl4-openssl-dev\
+	libcurl4-openssl-dev libxml2-dev libssl-dev\
 	flameshot apt-listbugs psmisc r-base -yy
 
 curl -fsSL https://starship.rs/install.sh | bash
