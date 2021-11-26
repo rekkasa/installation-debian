@@ -19,6 +19,8 @@ cd $USERHOME/src && git clone https://github.com/dudik/herbe.git
 cd $USERHOME/src && git clone https://git.suckless.org/slstatus
 cd $USERHOME && git clone https://gitlab.com/dwt1/wallpapers.git
 mv $USERHOME/wallpapers/ $USERHOME/Wallpapers/
+cd $USERHOME/git && git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # Fonts
 echo -e "\n\nInstsalling Nerd fonts\n"
