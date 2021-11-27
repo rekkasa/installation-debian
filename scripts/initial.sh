@@ -9,6 +9,7 @@ USERHOME=/home/$NAME
 
 apt update && apt upgrade -yy
 apt install xorg xinit build-essential libx11-dev intel-microcode \
+	materia-gtk-theme numix-icon-theme lxappearance \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
