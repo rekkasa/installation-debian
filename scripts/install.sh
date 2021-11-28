@@ -4,22 +4,24 @@ NAME=${1?2Error: no user given}
 USERHOME=/home/$NAME
 
 # Replace sources.list
-[[ -f /etc/apt/sources.list ]] && { sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak; sudo cp $USERHOME/installation-debian/files/sources.list /etc/apt/sources.list; }
-[[ -f /etc/apt/preferences ]] && { sudo cp $USERHOME/installation-debian/files/preferences /etc/apt/preferences; }
+sudo su
+[[ -f /etc/apt/sources.list ]] && { mv /etc/apt/sources.list /etc/apt/sources.list.bak; cp $USERHOME/installation-debian/files/sources.list /etc/apt/sources.list; }
+[[ -f /etc/apt/preferences ]] && { cp $USERHOME/installation-debian/files/preferences /etc/apt/preferences; }
 
-sudo apt update && apt upgrade -yy
-sudo apt install xorg xinit build-essential libx11-dev intel-microcode \
+apt update && apt upgrade -yy
+apt install xorg xinit build-essential libx11-dev intel-microcode \
 	materia-gtk-theme numix-icon-theme lxappearance \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
 	libxcb-xfixes0-dev python3 firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2\
-	libcurl4-openssl-dev libxml2-dev libssl-dev\
+	libcurl4-openssl-dev libxml2-dev libssl-dev \
 	fonts-dejavu fonts-inconsolata \
 	flameshot apt-listbugs psmisc r-base -yy
 
-sudo curl -fsSL https://starship.rs/install.sh | bash
+curl -fsSL https://starship.rs/install.sh | bash
+exit
 
 export PATH=`pwd`:$PATH
 
@@ -79,22 +81,28 @@ ln -s $USERHOME/configs/.bashrc $USERHOME/.basrc
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
 
+echo "-------------------------"
+echo "| Generating symlinks    |"
+echo "-------------------------"
+
+sudo su
 echo -e "\n\n Symlinks\n"
-sudo ln -s $USERHOME/src/dwm/dwm /usr/bin
-sudo ln -s $USERHOME/src/dmenu/dmenu /usr/bin
-sudo ln -s $USERHOME/src/dmenu/dmenu_run /usr/bin
-sudo ln -s $USERHOME/src/dmenu/dmenu_path /usr/bin
-sudo ln -s $USERHOME/src/dmenu/stest /usr/bin
-sudo ln -s $USERHOME/src/slstatus/slstatus /usr/bin
-sudo ln -s $USERHOME/src/herbe/herbe /usr/bin
-sudo ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
+ln -s $USERHOME/src/dwm/dwm /usr/bin
+ln -s $USERHOME/src/dmenu/dmenu /usr/bin
+ln -s $USERHOME/src/dmenu/dmenu_run /usr/bin
+ln -s $USERHOME/src/dmenu/dmenu_path /usr/bin
+ln -s $USERHOME/src/dmenu/stest /usr/bin
+ln -s $USERHOME/src/slstatus/slstatus /usr/bin
+ln -s $USERHOME/src/herbe/herbe /usr/bin
+ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
 
 
 # System changes
 ## Swappiness
-sudo echo 10 > /proc/sys/vm/swappiness
-sudo cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
-sudo echo "" >> /etc/sysctl.conf
-sudo echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
-sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
+echo 10 > /proc/sys/vm/swappiness
+cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
+echo "" >> /etc/sysctl.conf
+echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
+echo "vm.swappiness = 10" >> /etc/sysctl.conf
 
+exit
