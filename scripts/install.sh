@@ -106,7 +106,8 @@ cargo build --release
 ln -s $USERHOME/configs/picom/picom.conf $USERHOME/.config/picom/
 ln -s $USERHOME/configs/alacritty $USERHOME/.config/alacritty
 ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
-
+[[ -f $USERHOME/.config/qtile/config.py ]] && rm $USERHOME/.config/qtile/config.py
+ln -s $USERHOME/configs/qtile/config.py .config/qtile/
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
 
@@ -129,6 +130,7 @@ echo "| Switching to: zsh!     |"
 echo "--------------------------"
 
 chsh --shell /bin/zsh arekkas
+sudo reboot
 # System changes
 ## Swappiness
 # sudo echo 10 > /proc/sys/vm/swappiness
@@ -136,4 +138,3 @@ chsh --shell /bin/zsh arekkas
 # sudo echo "" >> /etc/sysctl.conf
 # sudo echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
 # sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
-
