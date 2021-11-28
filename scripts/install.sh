@@ -25,11 +25,11 @@ sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microc
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
 	libxcb-xfixes0-dev libxkbcommon-dev firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2 exa \
-	libcurl4-openssl-dev libxml2-dev libssl-dev \
-	fonts-dejavu fonts-inconsolata zsh \
+	libcurl4-openssl-dev libxml2-dev libssl-dev pcmanfm \
+	fonts-dejavu fonts-inconsolata zsh rofi \
 	flameshot apt-listbugs psmisc r-base -yy
 
-pip3 install xcffib
+pip3 install xcffib psutil
 pip3 install --no-cache-dir cairocffi
 
 curl -fsSL https://starship.rs/install.sh | bash
@@ -37,8 +37,12 @@ curl -fsSL https://starship.rs/install.sh | bash
 export PATH=`pwd`:$PATH
 
 # Create required directories
-mkdir -p $USERHOME/Documents $USERHOME/Pictures $USERHOME/src/dwm \
-	 $USERHOME/src/alacritty $USERHOME/.config/picom
+mkdir -p $USERHOME/Documents \
+	$USERHOME/Pictures $USERHOME/src/dwm \
+	$USERHOME/src/alacritty \
+	$USERHOME/.config/picom \
+	$USERHOME/.config/rofi \
+	$USERHOME/.config/qtile
 
 echo "-----------------------------"
 echo "| Fetching git repos        |"
