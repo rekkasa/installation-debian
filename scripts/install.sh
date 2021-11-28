@@ -106,7 +106,7 @@ cargo build --release
 ln -s $USERHOME/configs/picom/picom.conf $USERHOME/.config/picom/
 ln -s $USERHOME/configs/alacritty $USERHOME/.config/alacritty
 ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
-[[ -f $USERHOME/.config/qtile/config.py ]] && rm $USERHOME/.config/qtile/config.py
+[ -f $USERHOME/.config/qtile/config.py ] && { rm $USERHOME/.config/qtile/config.py; }
 ln -s $USERHOME/configs/qtile/config.py .config/qtile/
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
