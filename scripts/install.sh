@@ -17,7 +17,7 @@ sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microc
 	libxcb-xfixes0-dev libxkbcommon-dev firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2\
 	libcurl4-openssl-dev libxml2-dev libssl-dev \
-	fonts-dejavu fonts-inconsolata \
+	fonts-dejavu fonts-inconsolata zsh \
 	flameshot apt-listbugs psmisc r-base -yy
 
 pip3 install xcffib
@@ -83,7 +83,7 @@ cargo build --release
 # Setup .config directory
 ln -s $USERHOME/configs/picom/picom.conf $USERHOME/.config/picom/
 ln -s $USERHOME/configs/alacritty $USERHOME/.config/alacritty
-ln -s $USERHOME/configs/.bashrc $USERHOME/.basrc
+ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
 
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
@@ -102,7 +102,7 @@ sudo ln -s $USERHOME/src/slstatus/slstatus /usr/bin
 sudo ln -s $USERHOME/src/herbe/herbe /usr/bin
 sudo ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
 
-
+chsh --shell /bin/zsh arekkas
 # System changes
 ## Swappiness
 # sudo echo 10 > /proc/sys/vm/swappiness
