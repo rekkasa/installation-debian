@@ -32,8 +32,8 @@ mkdir -p $USERHOME/Documents $USERHOME/Pictures $USERHOME/src/dwm \
 	 $USERHOME/src/alacritty $USERHOME/.config/picom
 
 # Fetch git repos
-cd $USERHOME && git clone https://gitlab.com/arekkas/configs.git && \
-	git clone https://gitlab.com/arekkas/scripts.git
+cd $USERHOME && git clone git://github.com/rekkasa/configs.git && \
+	git clone git://github.com/rekkasa/scripts.git
 cd $USERHOME/src && git clone https://git.suckless.org/dwm
 cd $USERHOME/src && git clone https://git.suckless.org/dmenu
 cd $USERHOME/src && git clone https://github.com/dudik/herbe.git
@@ -105,9 +105,9 @@ sudo ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
 
 # System changes
 ## Swappiness
-sudo echo 10 > /proc/sys/vm/swappiness
-sudo cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
-sudo echo "" >> /etc/sysctl.conf
-sudo echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
-sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
+# sudo echo 10 > /proc/sys/vm/swappiness
+# sudo cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
+# sudo echo "" >> /etc/sysctl.conf
+# sudo echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
+# sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
 
