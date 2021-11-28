@@ -3,11 +3,20 @@
 NAME=${1?2Error: no user given}
 USERHOME=/home/$NAME
 
+echo "-----------------------------"
+echo "| Updating to unstable !!   |"
+echo "-----------------------------"
 # Replace sources.list
 [[ -f /etc/apt/sources.list ]] && { sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak; sudo cp $USERHOME/installation-debian/files/sources.list /etc/apt/sources.list; }
 [[ -f /etc/apt/preferences ]] && { sudo cp $USERHOME/installation-debian/files/preferences /etc/apt/preferences; }
 
-sudo apt update && sudo apt upgrade -yy
+sudo apt update && sudo apt dist-upgrade -yy
+
+
+echo "-----------------------------"
+echo "| Installing packages       |"
+echo "-----------------------------"
+
 sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microcode \
 	python3 python3-pip python-dbus libpangocairo-1.0-0 \
 	materia-gtk-theme numix-icon-theme lxappearance \
@@ -31,6 +40,9 @@ export PATH=`pwd`:$PATH
 mkdir -p $USERHOME/Documents $USERHOME/Pictures $USERHOME/src/dwm \
 	 $USERHOME/src/alacritty $USERHOME/.config/picom
 
+echo "-----------------------------"
+echo "| Fetching git repos        |"
+echo "-----------------------------"
 # Fetch git repos
 cd $USERHOME && git clone git://github.com/rekkasa/configs.git && \
 	git clone git://github.com/rekkasa/scripts.git
@@ -53,20 +65,29 @@ ln -s $USERHOME/configs/xinitrc $USERHOME/.xinitrc
 # ln -s $USERHOME/configs/dwm/config.h $USERHOME/src/dwm/
 # cd $USERHOME/src/dwm && make
 
+echo "-----------------------------"
+echo "| Setup qtile               |"
+echo "-----------------------------"
 # Setup qtile
 cd $USERHOME/src/qtile && pip3 install .
 
+echo "-----------------------------"
+echo "| Setup dmenu               |"
+echo "-----------------------------"
 # Setup dmenu
 cd $USERHOME/src/dmenu && make
 
 # Setup slstatus
-ln -s $USERHOME/configs/slstatus/config.h $USERHOME/src/slstatus
-cd $USERHOME/src/slstatus && make
+# ln -s $USERHOME/configs/slstatus/config.h $USERHOME/src/slstatus
+# cd $USERHOME/src/slstatus && make
 
 # Setup herbe
 ## Link here to personal setup of herbe when available
 cd $USERHOME/src/herbe && make
 
+echo "-----------------------------"
+echo "| Setup alacritty           |"
+echo "-----------------------------"
 # Setup alacritty
 echo -e "\n\n BUILDING ALACRITTY\n"
 git clone https://github.com/alacritty/alacritty.git $USERHOME/src/alacritty
