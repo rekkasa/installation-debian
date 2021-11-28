@@ -15,7 +15,7 @@ sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microc
 	network-manager xbacklight curl cmake pkg-config \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
 	libxcb-xfixes0-dev libxkbcommon-dev firefox ufw wget\
-	r-cran-curl r-cran-openssl r-cran-xml2\
+	r-cran-curl r-cran-openssl r-cran-xml2 exa \
 	libcurl4-openssl-dev libxml2-dev libssl-dev \
 	fonts-dejavu fonts-inconsolata zsh \
 	flameshot apt-listbugs psmisc r-base -yy
@@ -41,13 +41,10 @@ cd $USERHOME/src && git clone https://git.suckless.org/slstatus
 cd $USERHOME/src && git clone https://github.com/qtile/qtile.git
 # cd $USERHOME && git clone https://gitlab.com/dwt1/wallpapers.git
 # mv $USERHOME/wallpapers/ $USERHOME/Wallpapers/
-cd $USERHOME/git && git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
+mkdir $USERHOME/Documents/git && \
+	cd $USERHOME/Documents/git && \
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-
-# Fonts
-# echo -e "\n\nInstsalling Nerd fonts\n"
-# cd $USERHOME/src && git clone https://github.com/ryanoasis/nerd-fonts.git
-# $USERHOME/src/nerd-fonts/install.sh
 
 # Setup xinit
 ln -s $USERHOME/configs/xinitrc $USERHOME/.xinitrc
@@ -88,9 +85,9 @@ ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
 
-echo "-------------------------"
+echo "--------------------------"
 echo "| Generating symlinks    |"
-echo "-------------------------"
+echo "--------------------------"
 
 echo -e "\n\n Symlinks\n"
 # ln -s $USERHOME/src/dwm/dwm /usr/bin
@@ -101,6 +98,10 @@ sudo ln -s $USERHOME/src/dmenu/stest /usr/bin
 sudo ln -s $USERHOME/src/slstatus/slstatus /usr/bin
 sudo ln -s $USERHOME/src/herbe/herbe /usr/bin
 sudo ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
+
+echo "--------------------------"
+echo "| Switching to: zsh!     |"
+echo "--------------------------"
 
 chsh --shell /bin/zsh arekkas
 # System changes
