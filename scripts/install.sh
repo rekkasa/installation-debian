@@ -14,7 +14,7 @@ apt install xorg xinit build-essential libx11-dev intel-microcode \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
-	libxcb-xfixes0-dev python3 firefox ufw wget\
+	libxcb-xfixes0-dev libxkbcommon-dev python3 firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2\
 	libcurl4-openssl-dev libxml2-dev libssl-dev \
 	fonts-dejavu fonts-inconsolata \
@@ -36,8 +36,8 @@ cd $USERHOME/src && git clone https://git.suckless.org/dwm
 cd $USERHOME/src && git clone https://git.suckless.org/dmenu
 cd $USERHOME/src && git clone https://github.com/dudik/herbe.git
 cd $USERHOME/src && git clone https://git.suckless.org/slstatus
-cd $USERHOME && git clone https://gitlab.com/dwt1/wallpapers.git
-mv $USERHOME/wallpapers/ $USERHOME/Wallpapers/
+# cd $USERHOME && git clone https://gitlab.com/dwt1/wallpapers.git
+# mv $USERHOME/wallpapers/ $USERHOME/Wallpapers/
 cd $USERHOME/git && git clone https://github.com/zsh-users/zsh-autosuggestions.git && \
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
@@ -68,6 +68,7 @@ cd $USERHOME/src/herbe && make
 echo -e "\n\n BUILDING ALACRITTY\n"
 git clone https://github.com/alacritty/alacritty.git $USERHOME/src/alacritty
 cd $USERHOME/src/alacritty && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# export PATH=$USERHOME/.cargo/bin:$PATH
 source $USERHOME/.cargo/env
 rustup override set stable
 rustup update stable
@@ -85,24 +86,22 @@ echo "-------------------------"
 echo "| Generating symlinks    |"
 echo "-------------------------"
 
-sudo su
 echo -e "\n\n Symlinks\n"
-ln -s $USERHOME/src/dwm/dwm /usr/bin
-ln -s $USERHOME/src/dmenu/dmenu /usr/bin
-ln -s $USERHOME/src/dmenu/dmenu_run /usr/bin
-ln -s $USERHOME/src/dmenu/dmenu_path /usr/bin
-ln -s $USERHOME/src/dmenu/stest /usr/bin
-ln -s $USERHOME/src/slstatus/slstatus /usr/bin
-ln -s $USERHOME/src/herbe/herbe /usr/bin
-ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
+# ln -s $USERHOME/src/dwm/dwm /usr/bin
+sudo ln -s $USERHOME/src/dmenu/dmenu /usr/bin
+sudo ln -s $USERHOME/src/dmenu/dmenu_run /usr/bin
+sudo ln -s $USERHOME/src/dmenu/dmenu_path /usr/bin
+sudo ln -s $USERHOME/src/dmenu/stest /usr/bin
+sudo ln -s $USERHOME/src/slstatus/slstatus /usr/bin
+sudo ln -s $USERHOME/src/herbe/herbe /usr/bin
+sudo ln -s $USERHOME/src/alacritty/target/release/alacritty /usr/bin
 
 
 # System changes
 ## Swappiness
-echo 10 > /proc/sys/vm/swappiness
-cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
-echo "" >> /etc/sysctl.conf
-echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
-echo "vm.swappiness = 10" >> /etc/sysctl.conf
+sudo echo 10 > /proc/sys/vm/swappiness
+sudo cp -p /etc/sysctl.conf /etc/sysctl.conf.`date +%Y%m%d-%H:%M`
+sudo echo "" >> /etc/sysctl.conf
+sudo echo "#Set swappiness to 10 to avoid swapping" >> /etc/sysctl.conf
+sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
 
-exit
