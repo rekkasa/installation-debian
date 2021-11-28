@@ -7,9 +7,9 @@ USERHOME=/home/$NAME
 [[ -f /etc/apt/sources.list ]] && { sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak; sudo cp $USERHOME/installation-debian/files/sources.list /etc/apt/sources.list; }
 [[ -f /etc/apt/preferences ]] && { sudo cp $USERHOME/installation-debian/files/preferences /etc/apt/preferences; }
 
-sudo apt update && apt upgrade -yy
+sudo apt update && sudo apt upgrade -yy
 sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microcode \
-	python3 python3-pip python-gobject python-dbus libpangocairo-1.0.0 \
+	python3 python3-pip python-dbus libpangocairo-1.0-0 \
 	materia-gtk-theme numix-icon-theme lxappearance \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
@@ -24,7 +24,6 @@ pip3 install xcffib
 pip3 install --no-cache-dir cairocffi
 
 curl -fsSL https://starship.rs/install.sh | bash
-exit
 
 export PATH=`pwd`:$PATH
 
