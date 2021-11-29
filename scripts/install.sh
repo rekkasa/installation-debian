@@ -40,7 +40,9 @@ export PATH=`pwd`:$PATH
 mkdir -p $USERHOME/Documents \
 	$USERHOME/Pictures \
 	$USERHOME/src/dwm \
-	$USERHOME/src/alacritty
+	$USERHOME/src/alacritty \
+	$USERHOME/.config/qtile \
+	$USERHOME/.config/picom
 
 echo "-----------------------------"
 echo "| Fetching git repos        |"
