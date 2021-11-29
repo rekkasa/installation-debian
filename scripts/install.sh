@@ -109,6 +109,11 @@ ln -s $USERHOME/configs/alacritty $USERHOME/.config/
 ln -s $USERHOME/configs/nvim $USERHOME/.config/
 rm -rf $USERHOME/.config/qtile && ln -s $USERHOME/configs/qtile $USERHOME/.config/
 
+echo "-----------------------------"
+echo "| Install vim plug          |"
+echo "-----------------------------"
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
 
 echo "--------------------------"
