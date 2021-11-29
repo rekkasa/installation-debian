@@ -87,7 +87,7 @@ cd $USERHOME/src/dmenu && make
 
 # Setup herbe
 ## Link here to personal setup of herbe when available
-cd $USERHOME/src/herbe && make
+# cd $USERHOME/src/herbe && make
 
 echo "-----------------------------"
 echo "| Setup alacritty           |"
@@ -103,11 +103,12 @@ rustup update stable
 cargo build --release
 
 # Setup .config directory
-ln -s $USERHOME/configs/picom/picom.conf $USERHOME/.config/picom/
-ln -s $USERHOME/configs/alacritty $USERHOME/.config/alacritty
+# ln -s $USERHOME/configs/picom/picom.conf $USERHOME/.config/picom/
+# ln -s $USERHOME/configs/alacritty $USERHOME/.config/alacritty
 ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
-[ -f $USERHOME/.config/qtile/config.py ] && { rm $USERHOME/.config/qtile/config.py; }
-ln -s $USERHOME/configs/qtile/config.py .config/qtile/
+ln -s $USERHOME/configs/picom $USERHOME/.config/
+ln -s $USERHOME/configs/alacritty $USERHOME/.config/
+rm -rf $USERHOME/.config/qtile && ln -s $USERHOME/configs/qtile $USERHOME/.config/
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
 
