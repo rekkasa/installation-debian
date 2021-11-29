@@ -18,8 +18,8 @@ echo "| Installing packages       |"
 echo "-----------------------------"
 
 sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microcode \
-	python3 python3-pip python-dbus libpangocairo-1.0-0 \
-	materia-gtk-theme numix-icon-theme lxappearance \
+	python3 python3-pip python-dbus libpangocairo-1.0-0 neovim \
+	materia-gtk-theme numix-icon-theme lxappearance dunst \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
 	libfreetype6-dev libfontconfig1-dev alsa-utils \
@@ -38,11 +38,9 @@ export PATH=`pwd`:$PATH
 
 # Create required directories
 mkdir -p $USERHOME/Documents \
-	$USERHOME/Pictures $USERHOME/src/dwm \
-	$USERHOME/src/alacritty \
-	$USERHOME/.config/picom \
-	$USERHOME/.config/rofi \
-	$USERHOME/.config/qtile
+	$USERHOME/Pictures \
+	$USERHOME/src/dwm \
+	$USERHOME/src/alacritty
 
 echo "-----------------------------"
 echo "| Fetching git repos        |"
@@ -108,6 +106,7 @@ cargo build --release
 ln -s $USERHOME/configs/.zshrc $USERHOME/.zshrc
 ln -s $USERHOME/configs/picom $USERHOME/.config/
 ln -s $USERHOME/configs/alacritty $USERHOME/.config/
+ln -s $USERHOME/configs/nvim $USERHOME/.config/
 rm -rf $USERHOME/.config/qtile && ln -s $USERHOME/configs/qtile $USERHOME/.config/
 
 echo -e 'eval "$(starship init bash)"' >> $USERHOME/.bashrc
