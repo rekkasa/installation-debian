@@ -22,7 +22,7 @@ sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microc
 	materia-gtk-theme numix-icon-theme lxappearance dunst \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
-	libfreetype6-dev libfontconfig1-dev alsa-utils \
+	libfreetype6-dev libfontconfig1-dev alsa-utils bat\
 	libxcb-xfixes0-dev libxkbcommon-dev firefox ufw wget\
 	r-cran-curl r-cran-openssl r-cran-xml2 exa \
 	libcurl4-openssl-dev libxml2-dev libssl-dev pcmanfm \
