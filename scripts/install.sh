@@ -18,7 +18,8 @@ echo "| Installing packages       |"
 echo "-----------------------------"
 
 sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microcode \
-	python3 python3-pip python-dbus libpangocairo-1.0-0 neovim \
+	python3 python3-pip python-dbus-dev libpangocairo-1.0-0 neovim \
+	python3-venv \
 	materia-gtk-theme numix-icon-theme lxappearance dunst \
 	libxft-dev libxinerama-dev feh picom thunar qpdfview \
 	network-manager xbacklight curl cmake pkg-config \
@@ -29,10 +30,10 @@ sudo apt install xorg xserver-xorg xinit build-essential libx11-dev intel-microc
 	fonts-dejavu fonts-inconsolata zsh rofi \
 	flameshot apt-listbugs psmisc r-base -yy
 
-pip3 install xcffib psutil
-pip3 install --no-cache-dir cairocffi
+# pip3 install xcffib psutil
+# pip3 install --no-cache-dir cairocffi
 
-curl -fsSL https://starship.rs/install.sh | bash
+curl -fsSL https://starship.rs/install.sh | sudo sh
 
 export PATH=`pwd`:$PATH
 
@@ -48,8 +49,8 @@ echo "-----------------------------"
 echo "| Fetching git repos        |"
 echo "-----------------------------"
 # Fetch git repos
-cd $USERHOME && git clone git://github.com/rekkasa/configs.git && \
-	git clone git://github.com/rekkasa/scripts.git
+cd $USERHOME && git clone https://github.com/rekkasa/configs.git && \
+	git clone https://github.com/rekkasa/scripts.git
 cd $USERHOME/src && git clone https://git.suckless.org/dwm
 cd $USERHOME/src && git clone https://git.suckless.org/dmenu
 cd $USERHOME/src && git clone https://github.com/dudik/herbe.git
@@ -73,6 +74,10 @@ echo "-----------------------------"
 echo "| Setup qtile               |"
 echo "-----------------------------"
 # Setup qtile
+cd $USERHOME/src/qtile
+python3 -m venv ./venv && source venv/bin/activate
+pip3 install xcffib psutil
+pip3 install --no-cache-dir cairocffi
 cd $USERHOME/src/qtile && pip3 install .
 
 echo "-----------------------------"

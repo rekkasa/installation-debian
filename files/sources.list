@@ -1,5 +1,5 @@
-deb http://ftp.nl.debian.org/debian/ sid main contrib non-free
+deb http://ftp.nl.debian.org/debian/ sid main contrib non-free non-free-firmware
 deb-src http://ftp.nl.debian.org/debian/ sid main
  
-deb http://ftp.nl.debian.org/debian/ testing main contrib non-free
+deb http://ftp.nl.debian.org/debian/ testing main contrib non-free non-free-firmware
 deb-src http://ftp.nl.debian.org/debian/ testing main
